@@ -3,13 +3,13 @@ package idat.edu.pe.rogger.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import idat.edu.pe.rogger.model.Producto;
 
-@Service
+@Repository
 public class ProductoRepositoryImp implements ProductoRepository {
-
+	
 	List<Producto> almacenamiento = new ArrayList<>();
 
 	@Override
@@ -22,8 +22,8 @@ public class ProductoRepositoryImp implements ProductoRepository {
 	public void actualizar(Producto producto) {
 		// TODO Auto-generated method stub
 		Producto existeActualizar = obtener(producto.getIdproducto());
-		eliminar(producto.getIdproducto());
-		guardar(existeActualizar);
+		eliminar(existeActualizar.getIdproducto());
+		almacenamiento.add(producto);
 	}
 
 	@Override
