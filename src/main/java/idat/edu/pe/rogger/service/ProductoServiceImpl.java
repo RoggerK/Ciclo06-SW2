@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-	
+
 import idat.edu.pe.rogger.model.Producto;
 import idat.edu.pe.rogger.repository.ProductoRepository;
 
@@ -16,31 +16,31 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public void guardar(Producto producto) {
 		// TODO Auto-generated method stub
-		repository.guardar(producto);
+		repository.save(producto);
 	}
 
 	@Override
 	public void actualizar(Producto producto) {
 		// TODO Auto-generated method stub
-		repository.actualizar(producto);
+		repository.saveAndFlush(producto);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
-		repository.eliminar(id);
+		repository.deleteById(id);
 	}
 
 	@Override
 	public List<Producto> listar() {
 		// TODO Auto-generated method stub
-		return repository.listar();
+		return repository.findAll();
 	}
-
+	
 	@Override
 	public Producto obtener(Integer id) {
 		// TODO Auto-generated method stub
-		return repository.obtener(id);
+		return repository.findById(id).orElse(null);
 	}
 
 }

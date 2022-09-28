@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import idat.edu.pe.rogger.model.Producto;
-import idat.edu.pe.rogger.repository.ProductoRepository;
 import idat.edu.pe.rogger.service.ProductoService;
 
 @RestController
 @RequestMapping("/producto/v1")
 public class ProductoRestController {
-	//Holaaaaaaaaaa Mundo :v
 	@Autowired
 	private ProductoService service;
 
@@ -45,7 +43,7 @@ public class ProductoRestController {
 
 	@RequestMapping(path = "/editar", method = RequestMethod.PUT)
 	public ResponseEntity<Void> editar(@RequestBody Producto producto) {
-		Producto nuevopro = service.obtener(producto.getIdproducto());
+		Producto nuevopro = service.obtener(producto.getIdProducto());
 		if (nuevopro != null) {
 			service.actualizar(producto);
 			return new ResponseEntity<Void>(HttpStatus.OK);
