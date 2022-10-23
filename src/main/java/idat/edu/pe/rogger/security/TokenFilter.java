@@ -33,7 +33,7 @@ public class TokenFilter extends OncePerRequestFilter { // desencripta el token
 		String token = null;
 		String username = null;
 
-		if (tokenHeader != null && tokenHeader.startsWith("Bearer ")) { // startsWith que contenga esa catena en la variable
+		if (tokenHeader != null && tokenHeader.startsWith("Bearer ")) { // startsWith que contenga esa cadena en la variable
 			token = tokenHeader.substring(7); // substring apartir de la posicion obtiene los datos
 
 			try {
@@ -53,7 +53,7 @@ public class TokenFilter extends OncePerRequestFilter { // desencripta el token
 
 			if (util.validateToken(token, user)) {
 				UsernamePasswordAuthenticationToken usernameToken = new UsernamePasswordAuthenticationToken(user, null,
-						user.getAuthorities());
+						user.getAuthorities()); //getAuthorities -> devolver los roles
 
 				usernameToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 

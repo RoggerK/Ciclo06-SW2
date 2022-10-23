@@ -25,7 +25,7 @@ public class UsuarioController {
 	@RequestMapping(path = "/crearToken", method = RequestMethod.POST)
 	public ResponseEntity<?> crearToken(@RequestBody UsuarioDTORequest request) {
 		UserDetails user = service.loadUserByUsername(request.getUsuario());
-		if (user.getPassword().equals(request.getContrasenia())) {
+		if (request.getContrasenia().equals(user.getPassword().toString())){//user.getPassword().equals(request.getContrasenia())) {
 			return ResponseEntity.ok(new UsuarioDTOResponse(util.generateToken(user.getUsername())));
 		} else {
 			throw new UsernameNotFoundException("Usuario y/o Contraseña incorrecto ");
