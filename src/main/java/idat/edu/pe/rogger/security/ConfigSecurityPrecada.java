@@ -40,24 +40,11 @@ public class ConfigSecurityPrecada extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("PROFESOR").password(encriptado().encode("123")).roles("ADMIN");
-//		auth.inMemoryAuthentication().withUser("ALUMNO").password(encriptado().encode("123")).roles("USER");
 		auth.userDetailsService(service).passwordEncoder(encriptado());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http.authorizeRequests()
-//		.antMatchers("/producto/v1/listar").hasAnyRole("ADMIN", "USER")
-//		.antMatchers("/producto/v1/listar/**").hasAnyRole("ADMIN", "USER")
-//		.antMatchers("/producto/v1/guardar").hasAnyRole("ADMIN")//.access("hasRole('ADMIN')")
-//		.antMatchers("/producto/v1/editar").hasAnyRole("ADMIN")
-//		.antMatchers("/producto/v1/eliminar/**").hasAnyRole("ADMIN")
-//		.and()
-//		.httpBasic()
-//		.and()
-//		.csrf().disable();
-		
 			http.authorizeHttpRequests()
 			.antMatchers("/crearToken").permitAll()
 			.anyRequest()
