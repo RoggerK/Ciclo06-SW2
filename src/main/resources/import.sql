@@ -1,0 +1,1 @@
+INSERT INTO usuario(usuario, contrasenia, rol) VALUES ("rogger", "$2a$12$eIZfme8UM78wDsjDtl5loOgdpql0D1ZKlMpyuett/adY30J8DF0OW", "ROLE_USER")
